@@ -1,5 +1,4 @@
 package christmas.domain;
-
 import java.util.Map;
 
 public class Order {
