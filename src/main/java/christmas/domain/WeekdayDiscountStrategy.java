@@ -16,14 +16,14 @@ public class WeekdayDiscountStrategy implements DiscountStrategy {
    */
   @Override
   public int applyDiscount(Map<Menu, Integer> foodItems) {
-    int mainMenuCount = 0;
+    int DesertMenuCount = 0;
     // 디저트 메뉴의 개수 산출
     for (Menu key : foodItems.keySet()) {
       if (key.getCategory() == FoodCategory.DESSERT) {
-        mainMenuCount += foodItems.get(key);
+        DesertMenuCount += foodItems.get(key);
       }
     }
-    return mainMenuCount * WEEKDAY_DISCOUNT_AMOUNT;
+    return DesertMenuCount * WEEKDAY_DISCOUNT_AMOUNT;
   }
 
 }
