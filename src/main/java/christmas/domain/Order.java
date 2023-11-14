@@ -1,12 +1,15 @@
 package christmas.domain;
+
+import christmas.constant.Menu;
 import java.util.Map;
 
 public class Order {
 
   private Integer reservationDate;
-  private Map<String, Integer> foodItems;  // 음식과 갯수를 매핑하는 맵
+  private Map<Menu, Integer> foodItems;  // 음식과 갯수를 매핑하는 맵
 
-  public Order(Integer reservationDate, Map<String, Integer> foodItems) {
+  /** Order : 예약 일자와 Map(Menu, 갯수) 를 가지고 있음.*/
+  public Order(Integer reservationDate, Map<Menu, Integer> foodItems) {
     validateDate(reservationDate);
     this.reservationDate = reservationDate;
     this.foodItems = foodItems;
@@ -16,7 +19,7 @@ public class Order {
     return reservationDate;
   }
 
-  public Map<String, Integer> getFoodItems() {
+  public Map<Menu, Integer> getFoodItems() {
     return foodItems;
   }
 
@@ -25,4 +28,5 @@ public class Order {
       throw new IllegalArgumentException("날짜는 1부터 31까지의 자연수여야 합니다.");
     }
   }
+
 }

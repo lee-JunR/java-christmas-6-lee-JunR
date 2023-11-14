@@ -1,41 +1,38 @@
 package christmas.domain;
-import org.junit.jupiter.api.DisplayName;
+
+import christmas.constant.Menu;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class OrderTest {
 
   @Test
-  void createOrderWithValidDate() {
-    // Arrange
-    Integer validDate = 15;
-    Map<String, Integer> foodItems = new HashMap<>();
-    foodItems.put("양송이수프", 2);
-    foodItems.put("티본스테이크", 1);
+  void testOrderCreation() {
+    // 예약 일자와 음식 주문 맵 생성
+    Integer reservationDate = 10;
+    Map<Menu, Integer> foodItems = new HashMap<>();
+    foodItems.put(Menu.T_BONE_STEAK, 2);
+    foodItems.put(Menu.CHOCO_CAKE, 1);
 
-    // Act
-    Order order = new Order(validDate, foodItems);
+    // 주문 생성
+    Order order = new Order(reservationDate, foodItems);
 
-    // Assert
-    assertEquals(validDate, order.getReservationDate());
+    // 생성된 주문의 예약 일자와 음식 주문 맵 확인
+    assertEquals(reservationDate, order.getReservationDate());
     assertEquals(foodItems, order.getFoodItems());
   }
 
   @Test
-  @DisplayName("날짜가 31일을 초과하면 에러가 발생한다.")
-  void createOrderWithInvalidDate() {
-    // Arrange
-    Integer invalidDate = 32;
-    Map<String, Integer> foodItems = new HashMap<>();
-    foodItems.put("양송이수프", 2);
-    foodItems.put("티본스테이크", 1);
+  void testInvalidReservationDate() {
+    // 잘못된 예약 일자로 주문 생성 시 예외 발생 확인
+    Integer invalidReservationDate = 40;
+    Map<Menu, Integer> foodItems = new HashMap<>();
+    foodItems.put(Menu.T_BONE_STEAK, 2);
 
-    // Act & Assert
-    assertThrows(IllegalArgumentException.class, () -> new Order(invalidDate, foodItems));
+    assertThrows(IllegalArgumentException.class, () -> new Order(invalidReservationDate, foodItems));
   }
 }
