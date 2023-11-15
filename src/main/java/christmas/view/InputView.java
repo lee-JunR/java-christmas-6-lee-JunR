@@ -54,7 +54,7 @@ public class InputView {
       }
       return visitDate;
     } catch (NumberFormatException e) {
-      throw new IllegalArgumentException("[ERROR] 숫자를 입력해 주세요.");
+      throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
     }
   }
 
@@ -69,7 +69,14 @@ public class InputView {
       }
 
       Menu menu = stringToMenu(menuAndQuantity[0].trim());
-      int quantity = Integer.parseInt(menuAndQuantity[1].trim());
+
+      // Try parsing quantity as an integer
+      int quantity;
+      try {
+        quantity = Integer.parseInt(menuAndQuantity[1].trim());
+      } catch (NumberFormatException e) {
+        throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      }
 
       if (quantity < 1) {
         throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
