@@ -24,6 +24,8 @@ public class WeekdayDiscountStrategy implements DiscountStrategy {
         DesertMenuCount += foodItems.get(key);
       }
     }
+    int discountPrice = DesertMenuCount * WEEKDAY_DISCOUNT_AMOUNT;
+    System.out.printf("평일 할인 : -%d 원\n", discountPrice);
     return DesertMenuCount * WEEKDAY_DISCOUNT_AMOUNT;
   }
 

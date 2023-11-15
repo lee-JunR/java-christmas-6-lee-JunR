@@ -1,7 +1,6 @@
 package christmas.service;
 
 import christmas.constant.Menu;
-import christmas.service.DiscountStrategy;
 import java.util.Map;
 
 public class ChristmasDiscountStrategy implements DiscountStrategy {
@@ -23,7 +22,9 @@ public class ChristmasDiscountStrategy implements DiscountStrategy {
    */
   @Override
   public int applyDiscount(Map<Menu, Integer> foodItems) {
-    return (TODAY * DAILY_DISCOUNT_INCREASE) + INITIAL_DISCOUNT_AMOUNT;
+    int discountPrice = (TODAY * DAILY_DISCOUNT_INCREASE) + INITIAL_DISCOUNT_AMOUNT;
+    System.out.printf("크리스마스 디데이 할인: -%d원\n", discountPrice);
+    return discountPrice;
   }
 
   private int validate(int today) {

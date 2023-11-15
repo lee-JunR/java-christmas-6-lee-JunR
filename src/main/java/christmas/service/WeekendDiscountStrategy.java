@@ -24,6 +24,8 @@ public class WeekendDiscountStrategy implements DiscountStrategy {
         mainMenuCount += foodItems.get(key);
       }
     }
-    return mainMenuCount * WEEKEND_DISCOUNT_AMOUNT;
+    int discountPrice = mainMenuCount * WEEKEND_DISCOUNT_AMOUNT;
+    System.out.printf("주말 할인: -%d원\n", discountPrice);
+    return discountPrice;
   }
 }
