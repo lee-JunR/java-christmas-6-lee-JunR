@@ -1,7 +1,8 @@
-package christmas.domain;
+package christmas.service;
 
 import christmas.constant.Menu;
 import christmas.constant.Menu.FoodCategory;
+import christmas.service.DiscountStrategy;
 import java.util.Map;
 
 public class WeekdayDiscountStrategy implements DiscountStrategy {
