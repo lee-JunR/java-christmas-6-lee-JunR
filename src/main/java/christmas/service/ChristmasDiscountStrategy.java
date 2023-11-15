@@ -6,12 +6,13 @@ import java.util.Map;
 public class ChristmasDiscountStrategy implements DiscountStrategy {
 
   private static final int CHRISTMAS_DAY = 25;
-  private static int TODAY;
   private static final int INITIAL_DISCOUNT_AMOUNT = 1000;
   private static final int DAILY_DISCOUNT_INCREASE = 100;
 
+  private final int today;
+
   public ChristmasDiscountStrategy(int today) {
-    TODAY = validate(today);
+    this.today = validate(today);
   }
 
   /**
@@ -22,7 +23,12 @@ public class ChristmasDiscountStrategy implements DiscountStrategy {
    */
   @Override
   public int applyDiscount(Map<Menu, Integer> foodItems) {
-    int discountPrice = (TODAY * DAILY_DISCOUNT_INCREASE) + INITIAL_DISCOUNT_AMOUNT;
+    if (today == 0) {
+      System.out.println("크리스마스 이후로는 할인이 적용되지 않습니다.");
+      return 0;
+    }
+
+    int discountPrice = (today * DAILY_DISCOUNT_INCREASE) + INITIAL_DISCOUNT_AMOUNT;
     System.out.printf("크리스마스 디데이 할인: -%d원\n", discountPrice);
     return discountPrice;
   }

@@ -35,7 +35,7 @@ public class ChristmasEventController {
     int totalDiscount = discountService.calculateDiacountcheck(order);
     OutputView.printTotalBenefitAmount(totalDiscount);
     if (discountService.isapplyChampagneDiscount(totalMenuPrice)){
-      OutputView.printDiscountedAmount(totalMenuPrice - totalDiscount+ 25000);
+      OutputView.printDiscountedAmount(totalMenuPrice - totalDiscount+ Menu.CHAMPAGNE.getPrice());
     }
     else{
       OutputView.printDiscountedAmount(totalMenuPrice - totalDiscount);
