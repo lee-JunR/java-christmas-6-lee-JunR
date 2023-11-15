@@ -28,5 +28,15 @@ public class Order {
       throw new IllegalArgumentException("날짜는 1부터 31까지의 자연수여야 합니다.");
     }
   }
+  public int calculateTotalPrice() {
+    int totalMenuPrice = 0;
+
+    for (Map.Entry<Menu, Integer> entry : foodItems.entrySet()) {
+      totalMenuPrice += entry.getKey().getPrice() * entry.getValue();
+    }
+
+    return totalMenuPrice;
+  }
+
 
 }
