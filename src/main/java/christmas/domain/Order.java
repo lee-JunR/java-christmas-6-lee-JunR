@@ -54,12 +54,12 @@ public class Order {
   }
 
   public int calculateTotalPrice() {
-    int totalMenuPrice = 0;
+    int totalPrice = 0;
 
     for (Map.Entry<Menu, Integer> entry : foodItems.entrySet()) {
-      totalMenuPrice += entry.getKey().getPrice() * entry.getValue();
+      totalPrice += entry.getKey().getPrice() * entry.getValue();
     }
 
-    return totalMenuPrice;
+    return totalPrice;
   }
 }
