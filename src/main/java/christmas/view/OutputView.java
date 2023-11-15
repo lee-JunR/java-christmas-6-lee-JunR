@@ -9,7 +9,7 @@ public class OutputView {
   /**
    * 이벤트 안내 메시지를 출력합니다.
    */
-  public void printEvent() {
+  public static void printEvent() {
     System.out.println("12월 26일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!");
   }
 
@@ -24,7 +24,7 @@ public class OutputView {
    *
    * @param totalOrderAmount 할인 전 총 주문 금액
    */
-  public void printTotalOrderAmount(int totalOrderAmount) {
+  public static void printTotalOrderAmount(int totalOrderAmount) {
     System.out.println("<할인 전 총주문 금액>");
     System.out.printf("%,d원\n", totalOrderAmount);
   }
@@ -34,7 +34,7 @@ public class OutputView {
    *
    * @param freeItems 증정 메뉴 리스트
    */
-  public void printFreeItems(List<String> freeItems) {
+  public static void printFreeItems(List<String> freeItems) {
     System.out.println("<증정 메뉴>");
     for (String freeItem : freeItems) {
       System.out.println(freeItem);
@@ -46,7 +46,7 @@ public class OutputView {
    *
    * @param benefits 혜택 내역 리스트
    */
-  public void printBenefits(List<String> benefits) {
+  public static void printBenefits(List<String> benefits) {
     System.out.println("<혜택 내역>");
     for (String benefit : benefits) {
       System.out.println(benefit);
@@ -58,7 +58,7 @@ public class OutputView {
    *
    * @param totalBenefitAmount 총 혜택 금액
    */
-  public void printTotalBenefitAmount(int totalBenefitAmount) {
+  public static void printTotalBenefitAmount(int totalBenefitAmount) {
     System.out.println("<총혜택 금액>");
     System.out.printf("%,d원\n", totalBenefitAmount);
   }
@@ -68,7 +68,7 @@ public class OutputView {
    *
    * @param discountedAmount 할인 후 예상 결제 금액
    */
-  public void printDiscountedAmount(int discountedAmount) {
+  public static void printDiscountedAmount(int discountedAmount) {
     System.out.println("<할인 후 예상 결제 금액>");
     System.out.printf("%,d원\n", discountedAmount);
   }
@@ -78,7 +78,7 @@ public class OutputView {
    *
    * @param eventBadge 12월 이벤트 배지
    */
-  public void printEventBadge(String eventBadge) {
+  public static void printEventBadge(String eventBadge) {
     System.out.println("<12월 이벤트 배지>");
     System.out.println(eventBadge);
   }
