@@ -16,7 +16,7 @@ public class SpecialDayDiscountStrategy implements DiscountStrategy {
    */
   @Override
   public int applyDiscount(Map<Menu, Integer> foodItems) {
-    System.out.printf("특별 할인 : -%d 원\n", SPECIALDAY_DISCOUNT_AMOUNT);
+    System.out.printf("특별 할인: -%d원\n", SPECIALDAY_DISCOUNT_AMOUNT);
     return SPECIALDAY_DISCOUNT_AMOUNT;
   }
 }
