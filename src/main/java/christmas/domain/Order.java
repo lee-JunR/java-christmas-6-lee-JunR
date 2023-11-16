@@ -29,21 +29,32 @@ public class Order {
     return foodItems;
   }
 
-  private void validateDate(Integer reservationDate) {
-    if (reservationDate < 1 || reservationDate > 31) {
-      throw new IllegalArgumentException("날짜는 1부터 31까지의 자연수여야 합니다.");
+  public void validateDate(Integer reservationDate) {
+    try {
+      if (reservationDate < 1 || reservationDate > 31) {
+        throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+      }
+    } catch (IllegalArgumentException e) {
+      System.err.println("Validation Error: " + e.getMessage());
+      // Handle the exception as needed, e.g., log it or throw a different exception
     }
   }
 
   private void validateOrderItems(Map<Menu, Integer> foodItems) {
-    if (containsOnlyBeverages(foodItems)) {
-      throw new IllegalArgumentException("음료만 주문할 수 없습니다.");
-    }
+    try {
+      if (containsOnlyBeverages(foodItems)) {
+        throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      }
 
-    if (totalMenuCount(foodItems) > MAX_MENU_COUNT) {
-      throw new IllegalArgumentException("메뉴는 한 번에 최대 20개까지만 주문할 수 있습니다.");
+      if (totalMenuCount(foodItems) > MAX_MENU_COUNT) {
+        throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+      }
+    } catch (IllegalArgumentException e) {
+      System.err.println("Validation Error: " + e.getMessage());
+      // Handle the exception as needed, e.g., log it or throw a different exception
     }
   }
+
 
   private boolean containsOnlyBeverages(Map<Menu, Integer> foodItems) {
     return foodItems.keySet().stream().allMatch(menu -> menu.getCategory() == Menu.FoodCategory.BEVERAGE);
