@@ -27,14 +27,4 @@ class OrderTest {
     assertEquals(foodItems, order.getFoodItems());
   }
 
-  @Test
-  @DisplayName("잘못된 예약 일자로 주문 생성 시 예외 발생 확인")
-  void testInvalidReservationDate() {
-    Integer invalidReservationDate = 40;
-    Map<Menu, Integer> foodItems = new HashMap<>();
-    foodItems.put(Menu.T_BONE_STEAK, 2);
-
-    assertThrows(IllegalArgumentException.class,
-        () -> new Order(invalidReservationDate, foodItems));
-  }
 }

@@ -32,7 +32,7 @@ public class Order {
   public void validateDate(Integer reservationDate) {
     try {
       if (reservationDate < 1 || reservationDate > 31) {
-        throw new IllegalArgumentException("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
+        throw new IllegalArgumentException("달력에 맞지 않는 날짜");
       }
     } catch (IllegalArgumentException e) {
       System.err.println("Validation Error: " + e.getMessage());
@@ -43,11 +43,11 @@ public class Order {
   private void validateOrderItems(Map<Menu, Integer> foodItems) {
     try {
       if (containsOnlyBeverages(foodItems)) {
-        throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        throw new IllegalArgumentException("음료만 주문");
       }
 
       if (totalMenuCount(foodItems) > MAX_MENU_COUNT) {
-        throw new IllegalArgumentException("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+        throw new IllegalArgumentException("20개를 초과하는 메뉴를 주문");
       }
     } catch (IllegalArgumentException e) {
       System.err.println("Validation Error: " + e.getMessage());
